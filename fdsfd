@@ -1,0 +1,40 @@
+def sep():
+    print("-"*120)
+
+my_fav_food = ["Корейская морковка", "Шаурма", "Шашлык", "Жаренная картошка"]
+fav_food_count = len(my_fav_food)
+
+# еда, которую нужно заменить
+food_to_dismiss = int(input("Какой продукт вы хотите заменить: "))
+sep()
+
+if food_to_dismiss > fav_food_count:
+    while food_to_dismiss > fav_food_count:
+        food_to_add = input("Введите имя нового продукта: ")
+        my_fav_food.append(food_to_add)
+        sep()
+        food_to_dismiss -= 1
+    fav_food_count = len(my_fav_food)
+    print(f"{food_to_add} был добавлен в список")
+elif food_to_dismiss < 0:
+    food_to_del = food_to_dismiss
+    count_to_del = 0
+    while food_to_del < 0:
+        del my_fav_food[count_to_del]
+        food_to_del += 1
+        count_to_del += 1
+        fav_food_count = len(my_fav_food)
+else:
+    food_to_change = input("На что вы хотите изменить данный продукт: ")
+    sep()
+    print(f"Вы заменили {my_fav_food[food_to_dismiss-1]} на {food_to_change}")
+    my_fav_food[food_to_dismiss-1] = food_to_change
+    
+    
+# вывод списка
+sep()
+print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
+i = 0
+while fav_food_count > i:
+    print(f"Моя любимая еда {my_fav_food[i]}")
+    i += 1
