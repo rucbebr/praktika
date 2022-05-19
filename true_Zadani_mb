@@ -18,31 +18,41 @@ if food_to_dismiss > fav_food_count:
         my_fav_food.append(food_to_add)
         sep()
         food_to_dismiss -= 1
+        print(f"{food_to_add} был добавлен в список")
+        sep()
     fav_food_count = len(my_fav_food)
-    print(f"{food_to_add} был добавлен в список")
+    print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
+    i = 0
+    while fav_food_count > i:
+        print(f"Моя любимая еда {my_fav_food[i]}")
+        i += 1
     
 # если мы хотим удалить предметы в нашем списке, то нужно написать -1 для удаления одного элемента, -2 для двух и т.д.
 elif food_to_dismiss < 0:
     abs_food_del = abs(food_to_dismiss)
-    if abs_food_del == fav_food_count: 
+    if abs_food_del == fav_food_count or abs_food_del > fav_food_count: 
         my_fav_food.clear()
         fav_food_count = len(my_fav_food)
+        print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
     else:
-        food_to_del = food_to_dismiss
-        food_to_del = abs(food_to_del)
-        del my_fav_food[-1:food_to_del]
+        del my_fav_food[-fav_food_count:abs_food_del]
         fav_food_count = len(my_fav_food)
+        # вывод списка
+        sep()
+        print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
+        i = 0
+        while fav_food_count > i:
+            print(f"Моя любимая еда {my_fav_food[i]}")
+            i += 1
         
 else:
     food_to_change = input("На что вы хотите изменить данный продукт: ")
     sep()
     print(f"Вы заменили {my_fav_food[food_to_dismiss-1]} на {food_to_change}")
     my_fav_food[food_to_dismiss-1] = food_to_change
-    
-    
-# вывод списка
-sep()
-print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
-i = 0
-while fav_food_count > i:
-    i += 1
+    sep()
+    print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
+    i = 0
+    while fav_food_count > i:
+        print(f"Моя любимая еда {my_fav_food[i]}")
+        i += 1
