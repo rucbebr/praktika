@@ -1,13 +1,17 @@
+# функция для удобного читания текста в консоли
 def sep():
     print("-"*120)
 
-my_fav_food = ["Корейская морковка", "Шаурма", "Шашлык", "Жаренная картошка"]
+# список, состоящий из еды
+my_fav_food = ["Корейская морковка", "Шаурма", "Шашлык", "Жаренная картошка", "банана"]
 fav_food_count = len(my_fav_food)
 
 # еда, которую нужно заменить
-food_to_dismiss = int(input("Какой продукт вы хотите заменить: "))
+food_to_dismiss = int(input("Какой продукт вы хотите заменить/удалить: "))
 sep()
 
+# если мы хотим заменить еду, например, под индексом 7, то так как наш список состоит из 4 элементов, то по условию
+# он добавит необходимые элементы, чтобы элементов в списке стало 7 и попросит для новой еды название
 if food_to_dismiss > fav_food_count:
     while food_to_dismiss > fav_food_count:
         food_to_add = input("Введите имя нового продукта: ")
@@ -16,14 +20,26 @@ if food_to_dismiss > fav_food_count:
         food_to_dismiss -= 1
     fav_food_count = len(my_fav_food)
     print(f"{food_to_add} был добавлен в список")
+    
+# если мы хотим удалить предметы в нашем списке, то нужно написать -1 для удаления одного элемента, -2 для двух и т.д.
 elif food_to_dismiss < 0:
-    food_to_del = food_to_dismiss
-    count_to_del = 0
-    while food_to_del < 0:
-        del my_fav_food[count_to_del]
-        food_to_del += 1
-        count_to_del += 1
+    abs_food_del = abs(food_to_dismiss)
+    if abs_food_del == fav_food_count: 
+        my_fav_food.clear()
         fav_food_count = len(my_fav_food)
+    else:
+        food_to_del = food_to_dismiss
+        count_to_del = 0
+        while food_to_del != 0:
+            del my_fav_food[count_to_del]
+            food_to_del += 1
+            count_to_del += 1
+            if count_to_del == fav_food_count/2: 
+                count_to_del = 0
+            if count_to_del == fav_food_count/2 - 0.5:
+                count_to_del = 0
+            fav_food_count = len(my_fav_food)
+        
 else:
     food_to_change = input("На что вы хотите изменить данный продукт: ")
     sep()
@@ -36,5 +52,4 @@ sep()
 print(f"В моём списке любимых продуктов {fav_food_count} продукта: ")
 i = 0
 while fav_food_count > i:
-    print(f"Моя любимая еда {my_fav_food[i]}")
     i += 1
