@@ -1,0 +1,17 @@
+list_size = int(input("Введите размер списка: "))
+numbers = []
+
+for i in range(list_size):
+    numbers.append(int(input("Введите число: ")))
+print(numbers)
+
+min = numbers[0]
+max = numbers[0]
+numbers_cout = len(numbers)
+for i in range(numbers_cout):
+    if numbers[i] < min:
+        min = numbers[i]
+    if numbers[i] > max:
+        max = numbers[i]
+print(f"{min = }")
+print(f"{max = }")
