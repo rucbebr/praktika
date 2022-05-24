@@ -1,0 +1,48 @@
+1.0 nomer
+
+def dist_beetween_2dots(x1,y1,x2,y2) -> float:
+    return (x2-x1) + (y2-y1)
+    
+x1 = float(input("x1 = "))
+y1 = float(input("y1 = "))
+x2 = float(input("x2 = "))
+y2 = float(input("y2 = "))
+
+print(f"Расстояние между точками равно {dist_beetween_2dots(x1,y1,x2,y2)}")
+
+1.1 nomer
+
+def dist_of_3points() -> float:
+    points = []
+    distance_of_3 = []
+    for i in range(6):
+        points.append(float(input("Введите точку: ")))
+    dist1 = (points[1] - points[0])
+    dist2 = (points[3] - points[2])
+    dist3 = (points[5] - points[4])
+    distance_of_3.append(dist1)
+    distance_of_3.append(dist2)
+    distance_of_3.append(dist3)
+    return distance_of_3
+    
+print(dist_of_3points())
+
+
+1.2 nomer
+
+def ploshad_triag(sizes) -> float:
+    if sizes[0] + sizes[1] > sizes[2]  and sizes[1] + sizes[2] > sizes[0] and sizes[0] + sizes[2] > sizes[1]:
+        P = (sizes[0] + sizes[1] + sizes[2])/2
+        S = (P*(P-sizes[0])*(P-sizes[1])*(P-sizes[2]))**0.5
+        return S 
+    else:
+        return -1
+    
+razmer_triag = [2,3,4]
+
+print(ploshad_triag(razmer_triag))
+
+
+1.3 nomer
+
+
