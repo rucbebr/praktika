@@ -1,0 +1,23 @@
+food = {
+    "apple":150,
+    "banana":300,
+    "orange":200,
+}
+
+for cc in food.keys():
+    print(f"In {cc}, {food.get(cc)} calories")
+    
+foods = food.keys()
+ccal = 0
+bluda = input("Введите блюда через пробел: ")
+new_foods = bluda.split()
+
+
+for i in new_foods:
+    if i in foods:
+        print(f"{i} есть в словаре")
+        ccal += food.get(i)
+    else:
+        print(f"{i} нет в словаре")
+
+print(f"{ccal} калорий в этих блюдах")
