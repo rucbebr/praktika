@@ -1,0 +1,88 @@
+food = {
+    
+    "Супы":{
+        "Борщ":500,
+        "Солянка":450,
+        "Щи":450,
+        "Том-ям":450,
+        "Луковый суп":450
+    },
+    
+    "Салаты": {
+        "Цезарь":500,
+        "Селёдка под шубой":420,
+        "Оливье":440,
+        "Крабовый":420,
+        "Овощной":490
+    },
+    
+    "Напитки": {
+        "Пино-колада":350,
+        "Балтика":350,
+        "Сидр Грушовый":350,
+        "Старый мельник":350,
+        "Лимонад черноголовка":350
+    }
+}
+
+# задание 1 (сумма всех калорий)
+def ccal_one_category(category):
+    all_ccal = 0
+    for kind, foods in food.items():
+        for bludo, ccal in foods.items():
+            if kind == category:
+                all_ccal += ccal
+    return all_ccal
+#print(ccal_one_category("Напитки"))
+
+
+# задание 0.5
+def true_or_false(dish_name):
+    for kind, foods in food.items():
+        for bludo, ccal in foods.items():
+            if dish_name in foods:
+                return True 
+    return False
+#print(true_or_false("Балтика"))
+
+
+# задание 0.6
+def in_which_category(dish_name):
+    if true_or_false(dish_name) == True:
+        for kind, foods in food.items():
+            if dish_name in foods:
+                return kind
+    else:
+        return False
+#print(in_which_category("Борщ"))
+
+
+# задание 2
+def add_new_dish(category,dish_name, ccal):
+    if true_or_false(dish_name) == True:
+        return print("Такое блюдо уже есть")
+    else:
+        food[category][dish_name] = ccal
+        print(food[category])
+#add_new_dish("Супы", "Кочерга", 250)
+    
+    
+    
+# задание 3
+def add_new_category(category):
+    food[category] = dict()
+    print(food)
+#add_new_category("Овощи")
+
+
+# задание 4
+def beaty_print():
+    for kind, foods in food.items():
+        print("-"*70)
+        print(f"Содержимое категории {kind!r}")
+        print("-"*70)
+        for bludo, ccal in foods.items():
+            print(f"В блюде {bludo} - {ccal} калорий")
+#beaty_print()
+
+    
