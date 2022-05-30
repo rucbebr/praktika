@@ -1,0 +1,45 @@
+revenue = 0
+
+tech = {
+    "Ноутбук": {
+        "price": 99000,             # Цена
+        "amount": 5,                # Остаток на складе
+        "kind": "Бытовая техника"   # Категория
+    },
+    
+    "Принтер": {
+        "price": 40000,             # Цена
+        "amount": 5,                # Остаток на складе
+        "kind": "Бытовая техника"   # Категория
+    },
+    
+    "Телевизор": {
+        "price": 100000,             # Цена
+        "amount": 5,                # Остаток на складе
+        "kind": "Бытовая техника"   # Категория
+    }
+}
+
+buys = {
+    "Телевизор":3
+}
+
+def beaty_print(dictionary):
+    for product, detail in dictionary.items():
+        print("-"*70)
+        print(f"Это {product!r}")
+        print("-"*70)
+        for something_detail, amount in detail.items():
+            print(f"{something_detail} - {amount}")
+            
+
+def buy_product(product_name: str):
+    global revenue
+    tech[product_name]["amount"] -= 1
+    revenue += tech[product_name]["price"]
+            
+if __name__ == "__main__":
+    beaty_print(tech)
+    buy_product("Принтер")
+
+    
