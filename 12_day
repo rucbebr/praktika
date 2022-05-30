@@ -20,10 +20,6 @@ tech = {
     }
 }
 
-buys = {
-    "Телевизор":3
-}
-
 def beaty_print(dictionary):
     for product, detail in dictionary.items():
         print("-"*70)
@@ -35,11 +31,31 @@ def beaty_print(dictionary):
 
 def buy_product(product_name: str):
     global revenue
+    if product_name not in tech:
+        return False
+    if tech[product_name]["amount"] == 0
+        return False
     tech[product_name]["amount"] -= 1
     revenue += tech[product_name]["price"]
-            
-if __name__ == "__main__":
-    beaty_print(tech)
-    buy_product("Принтер")
 
+spisok = {
+    "Телевизор":2
+}
+
+# 3 задача
+def buy_several_products(spisok_dict:dict):
+    global tech
+    for product, detail in tech.items():
+        if product in spisok:
+            for i in range(spisok_dict[product]):
+                buy_product(product)
+    return spisok_dict
+
+#def buys():
+#    product_name = input("Введите название товара: ")
+#    amount = int(input("Введите кол-во товара: "))
+#    spisok = dict.fromkeys([product_name], amount)
     
+if __name__ == "__main__":
+    print(buy_several_products(spisok))
+
