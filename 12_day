@@ -15,8 +15,14 @@ tech = {
     
     "Телевизор": {
         "price": 100000,             # Цена
-        "amount": 5,                # Остаток на складе
+        "amount": 7,                # Остаток на складе
         "kind": "Бытовая техника"   # Категория
+    },
+    
+    "Мобилка": {
+        "price": 50000,             # Цена
+        "amount": 4,                # Остаток на складе
+        "kind": "Устройство связи"   # Категория
     }
 }
 
@@ -33,29 +39,63 @@ def buy_product(product_name: str):
     global revenue
     if product_name not in tech:
         return False
-    if tech[product_name]["amount"] == 0
+    if tech[product_name]["amount"] == 0:
         return False
     tech[product_name]["amount"] -= 1
     revenue += tech[product_name]["price"]
 
 spisok = {
-    "Телевизор":2
+    "Телевизор":11
 }
+
 
 # 3 задача
 def buy_several_products(spisok_dict:dict):
     global tech
+    count = 1
+    output_spisok = {}
     for product, detail in tech.items():
-        if product in spisok:
+        if product in spisok_dict:
             for i in range(spisok_dict[product]):
                 buy_product(product)
-    return spisok_dict
+                if tech[product]["amount"] != 0:
+                    output_spisok[product] = count
+                    count += 1
+            output_spisok[product] += 1
+            return output_spisok
+        
 
-#def buys():
-#    product_name = input("Введите название товара: ")
-#    amount = int(input("Введите кол-во товара: "))
-#    spisok = dict.fromkeys([product_name], amount)
-    
+# ex 4
+def analog_below_price(product_name: str):
+    global tech
+    if product_name in tech:
+        for product, detail in tech.items():
+            for something_detail, info in detail.items():
+                if tech[product_name]["kind"] == tech[product]["kind"] and tech[product_name]["price"] > tech[product]["price"]:
+                    print(f"Это {product!r} - {something_detail} - {info}")
+
+
+#Составить функцию для пополнения склада. Функция принимает словарь вида {название товара: количество}. Функция должна обновить количество товаров на складе.
+# ex 6
+spisok_na_popol = {
+    "Мобилка":3
+}
+
+def add_to_sklad(spisok_dict:dict):
+    global tech
+    for product, detail in tech.items():
+        if product in spisok_dict:
+            for prod, amount in spisok_dict.items():
+                if spisok_dict[prod] == tech[product]:
+                    tech[product]["amount"] += spisok_dict[prod][amount]
+            
+
+
+
+
 if __name__ == "__main__":
-    print(buy_several_products(spisok))
-
+    #print(buy_several_products(spisok))
+    #beaty_print(tech)
+    #analog_below_price("Ноутбук")
+    add_to_sklad(spisok_na_popol)
+    beaty_print(tech)
