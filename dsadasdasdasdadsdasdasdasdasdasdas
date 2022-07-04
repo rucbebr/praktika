@@ -1,0 +1,39 @@
+def vibor(choice):
+    global tasks
+    if choice == 1:
+        print(tasks.keys())
+        print("\n")
+    if choice == 2:
+        task = input("Подробность какой задачи Вас интересует? - ")
+        print(tasks.get(task))
+        print("\n")
+
+    if choice == 3:
+        name = input("Введите название задачи - ")
+        description = input("Введите описание задачи - ")
+        tasks[name] = description
+        print("\n")
+
+    if choice == 4:
+        name = input("Какую задачу удалить? - ")
+        if name in tasks:
+            del tasks[name]
+        print("\n")
+
+
+tasks = {
+    "Анжумани":"Отжаться 50 раз на одной руке",
+    "Турник":"Папатягиваца 50 раз ногой",
+    "Подик":"Сделать 100 тяг подряд"
+}
+
+while True:
+    print("[1] Вывести список задач")
+    print("[2] Посмотреть подробности задачи")
+    print("[3] Добавть задачу")
+    print("[4] Удалить задачу")
+    print("[5] Выход")
+    choice = int(input("Пожалуйста, введите соответствующую цифру: "))
+    if choice == 5:
+        break
+    vibor(choice)
